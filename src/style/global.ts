@@ -41,4 +41,11 @@ export const GlobalStyled = createGlobalStyle`
     border-radius: 2rem;
     background: ${({ theme }) => theme.colors['brand-purple']}
   }
+
+  .container {
+    width: 100%;
+    max-width: 70rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
 `
