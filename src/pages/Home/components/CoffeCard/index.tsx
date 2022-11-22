@@ -9,26 +9,33 @@ import {
   Tags,
 } from './styled'
 import { ShoppingCart } from 'phosphor-react'
-export function CoffeCard() {
+export interface Coffee {
+  id: number
+  tags: string[]
+  name: string
+  description: string
+  photo: string
+  price: number
+}
+interface CoffeeProps {
+  coffee: Coffee
+}
+export function CoffeCard({ coffee }: CoffeeProps) {
   return (
     <CoffeeCardContainer>
-      <img
-        src="https://s3-alpha-sig.figma.com/img/55b1/f9ee/64600f98b2bae456b96fdc624c4b4f47?Expires=1670198400&Signature=TlqZwy6awhzzSWGInHpaVPvGLtcUOGhPnpNjWQlGP3DBiMPKi8Cj1bV9GUxZgcT3qt6vDEBM1HFNQ-FX5QALGl5cm8wM-g5PO4bKjK9BapzdYGEjO6YEHq-Gl6A-cC2064vvn5mIFzflfaQrcfhhBiIHKcNUSfkFJwr43kYQOVNsu5GR17gM1JOzOye6PI0VwUJlDt9PVMMrICB2eieYRWlli0XeZLAMlbdpzvkMF2xbne4w1wEvNxYlddiznRU5aIUMqFp39oAi9AYR6F6VTtgpnCrYCky8Z3K~XBmtq8OSuQ157izYAIOf2xt3KsNUpRwZtAhgpflB7IarweLcUA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-        alt=""
-      />
+      <img src={coffee.photo} alt="" />
       <Tags>
-        <span>Tradicional</span>
-        <span>Com Leite</span>
+        {coffee.tags.map((item) => (
+          <span key={coffee.id + item}>{item}</span>
+        ))}
       </Tags>
-      <Name>Expresso Tradicional</Name>
-      <Description>
-        O tradicional café feito com água quente e grãos moídos
-      </Description>
+      <Name>{coffee.name}</Name>
+      <Description>{coffee.description}</Description>
       <CardFooter>
         <div>
           <RegularText size="s">R$</RegularText>
           <TitleText size="m" color="text" as="strong">
-            9,90
+            {coffee.price}
           </TitleText>
         </div>
         <AddCartWrapper>
