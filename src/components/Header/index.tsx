@@ -4,8 +4,8 @@ import coffeeLogoImg from '../../assets/coffee-delivery-logo.svg'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 export function HeaderComponent() {
   return (
-    <HeaderContainer className="container">
-      <div>
+    <HeaderContainer>
+      <div className="container">
         <NavLink to="/">
           <img src={coffeeLogoImg} alt="" />
         </NavLink>
