@@ -10,7 +10,7 @@ export function HeaderComponent() {
           <img src={coffeeLogoImg} alt="" />
         </NavLink>
         <HeaderButtonsContainer>
-          <HeaderButton variant="purple">
+          <HeaderButton variant="purple" as="span">
             <MapPin size={20} weight="fill" />
             Manaus, AM
           </HeaderButton>
