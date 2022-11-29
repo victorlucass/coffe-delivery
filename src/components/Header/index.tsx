@@ -12,7 +12,7 @@ export function HeaderComponent() {
         <HeaderButtonsContainer>
           <HeaderButton variant="purple">
             <MapPin size={20} weight="fill" />
-            Porto Alegre, RS
+            Manaus, AM
           </HeaderButton>
           <NavLink to="/completeOrder">
             <HeaderButton variant="yellow">
