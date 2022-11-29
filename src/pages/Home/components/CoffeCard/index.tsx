@@ -9,6 +9,7 @@ import {
   Tags,
 } from './styled'
 import { ShoppingCart } from 'phosphor-react'
+import { formatMoney } from '../../../../utils/formatMoney'
 export interface Coffee {
   id: number
   tags: string[]
@@ -35,7 +36,7 @@ export function CoffeCard({ coffee }: CoffeeProps) {
         <div>
           <RegularText size="s">R$</RegularText>
           <TitleText size="m" color="text" as="strong">
-            {coffee.price}
+            {formatMoney(coffee.price)}
           </TitleText>
         </div>
         <AddCartWrapper>
