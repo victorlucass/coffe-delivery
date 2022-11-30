@@ -1,4 +1,5 @@
 import { TitleText } from '../../../../components/Typography'
+import { useCart } from '../../../../hooks/useCart'
 import { CoffesCartCard } from '../CoffesCartCard'
 import { ConfirmationSection } from './ConfirmationSection'
 import {
@@ -8,13 +9,16 @@ import {
 } from './styled'
 
 export function SelectedCoffees() {
+  const { cartItems } = useCart()
   return (
     <SelectedCoffeesContainer>
       <TitleText size="xs" color="subtitle">
         Cafés Selecionados
       </TitleText>
       <DetailsContainer>
-        <CoffesCartCard />
+        {cartItems.map((coffee) => {
+          return <CoffesCartCard key={coffee.id} coffee={coffee} />
+        })}
         <ConfirmationSectionContainer>
           <ConfirmationSection />
         </ConfirmationSectionContainer>
