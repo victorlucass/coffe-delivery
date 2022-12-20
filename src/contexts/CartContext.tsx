@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useEffect, useState } from 'react'
 import { Coffee } from '../pages/Home/components/CoffeCard'
 import { produce } from 'immer'
 export interface CartItem extends Coffee {
@@ -24,12 +24,23 @@ interface CartContextProps {
 export const CartContext = createContext({} as CartContextType)
 
 export function CartContextProvider({ children }: CartContextProps) {
-  const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+    const storedCartItem = localStorage.getItem('coffeeDelivery:cartItems')
+    if (storedCartItem) {
+      return JSON.parse(storedCartItem)
+    } else {
+      return []
+    }
+  })
   const cartQuantity = cartItems.length
   const totalItemPrice = cartItems.reduce((total, cartItem) => {
     total += cartItem.quantity * cartItem.price
     return total
   }, 0)
+
+  useEffect(() => {
+    localStorage.setItem('coffeeDelivery:cartItems', JSON.stringify(cartItems))
+  }, [cartItems])
 
   function addCoffeeToCart(coffee: CartItem) {
     const coffeeAlreadyToCart = cartItems.findIndex(
