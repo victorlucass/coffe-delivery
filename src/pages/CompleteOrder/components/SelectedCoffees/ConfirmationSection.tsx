@@ -6,7 +6,6 @@ import { ConfirmationSectionContainer } from './styled'
 
 export function ConfirmationSection() {
   const { totalItemPrice, cartQuantity } = useCart()
-
   const priceDeliveryFee = 3.5
   return (
     <ConfirmationSectionContainer>
