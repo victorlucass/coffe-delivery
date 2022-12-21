@@ -10,7 +10,7 @@ export function Router() {
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/completeOrder" element={<CompleteOrderPage />} />
-        <Route path="/order-confirmed" element={<OrderConfirmed />} />
+        <Route path="/orderConfirmed" element={<OrderConfirmed />} />
       </Route>
     </Routes>
   )
